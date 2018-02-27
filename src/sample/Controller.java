@@ -1,20 +1,18 @@
 package sample;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.WindowEvent;
-
+import javafx.scene.layout.VBox;
 
 public class Controller {
-    static Double Height=0.0;
 
-    @FXML private AnchorPane listaNoticias;
-    @FXML private ScrollPane scrollNoticias;
+    public static Double Height;
+    public static Double Width;
 
-    public void cambiarScroll(){
-        scrollNoticias.setPrefHeight(Height);
+    @FXML VBox Vbox;
+
+    public void initialize(){
+        System.out.println(Width);
+        Vbox.setLayoutX((Width-Vbox.getPrefWidth())/2);
+        Vbox.setLayoutY((Height-Vbox.getPrefHeight())/2);
     }
-
 }
