@@ -1,12 +1,14 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import sample.Controladores.Login;
 
 public class Main extends Application {
 
@@ -18,11 +20,13 @@ public class Main extends Application {
         primaryStage.setY(bounds.getMinY());
         primaryStage.setWidth(bounds.getWidth());
         primaryStage.setHeight(bounds.getHeight());
-        Controller.Height=bounds.getHeight();
-        Controller.Width=bounds.getWidth();
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setMaximized(true);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Vistas/login.fxml"));
+        Parent root = loader.load();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
+        Login login = loader.<Login>getController();
+        login.initData(primaryStage,bounds.getHeight(),bounds.getWidth(),bounds.getMinY(),bounds.getMinX());
         primaryStage.show();
     }
 

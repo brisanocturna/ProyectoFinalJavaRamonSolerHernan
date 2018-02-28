@@ -7,18 +7,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controladores.Login">
    <children>
       <VBox fx:id="Vbox" layoutX="239.0" layoutY="86.0" prefHeight="183.0" prefWidth="137.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nick" textAlignment="CENTER" wrappingWidth="136.13671875" />
-            <TextField />
+            <TextField fx:id="nick" />
             <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="3.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" textAlignment="CENTER" wrappingWidth="136.13671875" />
-            <TextField />
+            <TextField fx:id="password" />
             <Separator orientation="VERTICAL" prefHeight="41.0" prefWidth="0.0" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Acceder" />
+            <Button mnemonicParsing="false" onMouseClicked="#onClickAcceder" prefHeight="25.0" prefWidth="138.0" text="Acceder" />
          </children>
       </VBox>
    </children>
