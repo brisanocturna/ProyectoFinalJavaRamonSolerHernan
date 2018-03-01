@@ -1,16 +1,51 @@
 package sample.Modelos;
 
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Noticias {
 
   private long id;
   private String titulo;
   private String contenido;
-  private java.sql.Timestamp fechaCreacion;
-  private java.sql.Timestamp fechaUpdate;
+  private Date fechaCreacion;
+  private Date fechaUpdate;
   private String imagen;
   private long idAutor;
+  private Autores autor;
+  private ArrayList<Comentarios> comentarios;
 
+  public Noticias(long id, String titulo, String contenido, Date fechaCreacion, Date fechaUpdate, String imagen, long idAutor) {
+    this.id = id;
+    this.titulo = titulo;
+    this.contenido = contenido;
+    this.fechaCreacion = fechaCreacion;
+    this.fechaUpdate = fechaUpdate;
+    this.imagen = imagen;
+    this.idAutor = idAutor;
+  }
+
+  public Noticias(String titulo, String contenido, Date fechaCreacion, Date fechaUpdate, String imagen, long idAutor) {
+    this.titulo = titulo;
+    this.contenido = contenido;
+    this.fechaCreacion = fechaCreacion;
+    this.fechaUpdate = fechaUpdate;
+    this.imagen = imagen;
+    this.idAutor = idAutor;
+  }
+
+  public Noticias(long id, String titulo, String contenido, Date fechaCreacion, Date fechaUpdate, String imagen, long idAutor, Autores autor, ArrayList<Comentarios> comentarios) {
+    this.id = id;
+    this.titulo = titulo;
+    this.contenido = contenido;
+    this.fechaCreacion = fechaCreacion;
+    this.fechaUpdate = fechaUpdate;
+    this.imagen = imagen;
+    this.idAutor = idAutor;
+    this.autor = autor;
+    this.comentarios = comentarios;
+  }
 
   public long getId() {
     return id;
@@ -39,20 +74,20 @@ public class Noticias {
   }
 
 
-  public java.sql.Timestamp getFechaCreacion() {
+  public Date getFechaCreacion() {
     return fechaCreacion;
   }
 
-  public void setFechaCreacion(java.sql.Timestamp fechaCreacion) {
+  public void setFechaCreacion(Date fechaCreacion) {
     this.fechaCreacion = fechaCreacion;
   }
 
 
-  public java.sql.Timestamp getFechaUpdate() {
+  public Date getFechaUpdate() {
     return fechaUpdate;
   }
 
-  public void setFechaUpdate(java.sql.Timestamp fechaUpdate) {
+  public void setFechaUpdate(Date fechaUpdate) {
     this.fechaUpdate = fechaUpdate;
   }
 
@@ -74,4 +109,19 @@ public class Noticias {
     this.idAutor = idAutor;
   }
 
+  public Autores getAutor() {
+    return autor;
+  }
+
+  public void setAutor(Autores autor) {
+    this.autor = autor;
+  }
+
+  public ArrayList<Comentarios> getComentarios() {
+    return comentarios;
+  }
+
+  public void setComentarios(ArrayList<Comentarios> comentarios) {
+    this.comentarios = comentarios;
+  }
 }

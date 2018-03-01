@@ -1,16 +1,48 @@
 package sample.Modelos;
 
 
+import java.util.Date;
+
 public class Comentarios {
 
   private long id;
   private String contenido;
-  private java.sql.Timestamp fechaCreacion;
-  private java.sql.Timestamp fechaUpdate;
+  private Date fechaCreacion;
+  private Date fechaUpdate;
   private long idAutor;
   private long idNoticia;
   private String titulo;
+  private Autores autor;
 
+  public Comentarios(long id, String contenido, Date fechaCreacion, Date fechaUpdate, long idAutor, long idNoticia, String titulo) {
+    this.id = id;
+    this.contenido = contenido;
+    this.fechaCreacion = fechaCreacion;
+    this.fechaUpdate = fechaUpdate;
+    this.idAutor = idAutor;
+    this.idNoticia = idNoticia;
+    this.titulo = titulo;
+  }
+
+  public Comentarios(String contenido, Date fechaCreacion, Date fechaUpdate, long idAutor, long idNoticia, String titulo) {
+    this.contenido = contenido;
+    this.fechaCreacion = fechaCreacion;
+    this.fechaUpdate = fechaUpdate;
+    this.idAutor = idAutor;
+    this.idNoticia = idNoticia;
+    this.titulo = titulo;
+  }
+
+  public Comentarios(long id, String contenido, Date fechaCreacion, Date fechaUpdate, long idAutor, long idNoticia, String titulo, Autores autor) {
+    this.id = id;
+    this.contenido = contenido;
+    this.fechaCreacion = fechaCreacion;
+    this.fechaUpdate = fechaUpdate;
+    this.idAutor = idAutor;
+    this.idNoticia = idNoticia;
+    this.titulo = titulo;
+    this.autor = autor;
+  }
 
   public long getId() {
     return id;
@@ -30,20 +62,20 @@ public class Comentarios {
   }
 
 
-  public java.sql.Timestamp getFechaCreacion() {
+  public Date getFechaCreacion() {
     return fechaCreacion;
   }
 
-  public void setFechaCreacion(java.sql.Timestamp fechaCreacion) {
+  public void setFechaCreacion(Date fechaCreacion) {
     this.fechaCreacion = fechaCreacion;
   }
 
 
-  public java.sql.Timestamp getFechaUpdate() {
+  public Date getFechaUpdate() {
     return fechaUpdate;
   }
 
-  public void setFechaUpdate(java.sql.Timestamp fechaUpdate) {
+  public void setFechaUpdate(Date fechaUpdate) {
     this.fechaUpdate = fechaUpdate;
   }
 

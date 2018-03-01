@@ -10,6 +10,17 @@ public class Autores {
   private String password;
   private String email;
 
+  public Autores(long id, String nombre, String apellidos, String nick, String password, String email) {
+    this.id = id;
+    this.nombre = nombre;
+    this.apellidos = apellidos;
+    this.nick = nick;
+    this.password = password;
+    this.email = email;
+  }
+
+  public Autores() {
+  }
 
   public long getId() {
     return id;
