@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="100.0" prefWidth="300.0" style="-fx-border-width: 2; -fx-border-color: #000000;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controladores.ItemComentario">
+   <children>
+      <VBox prefHeight="98.0" prefWidth="198.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TextField fx:id="tituloItemComentario" editable="false" />
+            <TextArea fx:id="contenidoItemComentario" prefHeight="200.0" prefWidth="200.0" />
+            <HBox prefHeight="25.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="autorItemComentario" editable="false" />
+                  <TextField fx:id="fechaItemComentario" editable="false" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="2.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

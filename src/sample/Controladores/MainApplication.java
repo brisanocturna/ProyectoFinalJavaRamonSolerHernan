@@ -3,9 +3,11 @@ package sample.Controladores;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.BaseDeDatos.NoticiasHelper;
 import sample.Modelos.Noticias;
@@ -29,6 +31,10 @@ public class MainApplication {
     @FXML Pane principal;
     @FXML ScrollPane scrollnoticias;
     @FXML ScrollPane scrollcomentarios;
+    @FXML AnchorPane rellenarnoticias;
+    @FXML AnchorPane rellenarcomentarios;
+    @FXML Button btnAgregarNoticia;
+    @FXML Button btnAgregarComentario;
 
     public void initialize(){
         try {
@@ -51,21 +57,20 @@ public class MainApplication {
         noticiasHelper= new NoticiasHelper();
         listanoticias=new ArrayList<>();
         listanoticias= noticiasHelper.getAllNoticias(conexion);
-        AnchorPane panelnoticias = new AnchorPane();
-        scrollnoticias.setContent(panelnoticias);
+        rellenarnoticias.setPrefWidth(this.width*0.25);
         try {
             ArrayList<Node> nodos = new ArrayList<>();
             for (int i = 0; i <listanoticias.size() ; i++) {
                 FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("../Vistas/item_noticia.fxml"));
                 AnchorPane root= fxmlLoader.load();
                 ItemNoticia controller = fxmlLoader.<ItemNoticia>getController();
-                controller.initData(listanoticias.get(i));
-                root.setLayoutY(i*(root.getPrefHeight()+10));
+                controller.initData(listanoticias.get(i), this.width, this.height, principal, rellenarcomentarios);
+                root.setLayoutY((i*(root.getPrefHeight()+10))+40);
                 root.setId(""+i);
                 root.setPrefWidth((this.width*0.25)-4);
                 nodos.add(root);
             }
-            panelnoticias.getChildren().addAll(nodos);
+            rellenarnoticias.getChildren().setAll(nodos);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,5 +90,22 @@ public class MainApplication {
         principal.setPrefWidth(this.width*0.5);
         principal.setLayoutX(scrollnoticias.getPrefWidth());
         principal.setLayoutY(0);
+        btnAgregarNoticia.setPrefWidth((this.width*0.25)-2);
+        btnAgregarComentario.setPrefWidth((this.width*0.25)-2);
+    }
+
+    public void onClickAgregarNoticia(){
+        try {
+            FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("../Vistas/mostrar_noticia.fxml"));
+            VBox root= null;
+            root = fxmlLoader.load();
+            root.setPrefWidth(this.width*0.5);
+            root.setPrefHeight(this.height);
+            MostrarNoticia controller = fxmlLoader.<MostrarNoticia>getController();
+            controller.agregarNoticias(this.width, this.height, this.rellenarcomentarios);
+            principal.getChildren().setAll(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

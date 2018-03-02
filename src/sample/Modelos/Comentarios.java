@@ -106,4 +106,11 @@ public class Comentarios {
     this.titulo = titulo;
   }
 
+  public Autores getAutor() {
+    return autor;
+  }
+
+  public void setAutor(Autores autor) {
+    this.autor = autor;
+  }
 }

@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import jfx.messagebox.MessageBox;
 import sample.BaseDeDatos.LoginHelper;
+import sample.Main;
 
 
 import java.io.IOException;

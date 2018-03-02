@@ -9,9 +9,11 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import sample.Controladores.Login;
+import sample.Modelos.Autores;
 
 public class Main extends Application {
 
+    public static Autores autores;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Screen screen = Screen.getPrimary();
