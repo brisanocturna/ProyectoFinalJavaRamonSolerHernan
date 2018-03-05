@@ -35,6 +35,7 @@ public class MainApplication {
     @FXML AnchorPane rellenarcomentarios;
     @FXML Button btnAgregarNoticia;
     @FXML Button btnAgregarComentario;
+    @FXML AnchorPane panelComentarios;
 
     public void initialize(){
         try {
@@ -54,6 +55,10 @@ public class MainApplication {
         this.x=x;
         this.y=y;
         resizeElements();
+        cargarNoticias();
+    }
+
+    public void cargarNoticias(){
         noticiasHelper= new NoticiasHelper();
         listanoticias=new ArrayList<>();
         listanoticias= noticiasHelper.getAllNoticias(conexion);
@@ -64,7 +69,7 @@ public class MainApplication {
                 FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("../Vistas/item_noticia.fxml"));
                 AnchorPane root= fxmlLoader.load();
                 ItemNoticia controller = fxmlLoader.<ItemNoticia>getController();
-                controller.initData(listanoticias.get(i), this.width, this.height, principal, rellenarcomentarios);
+                controller.initData(listanoticias.get(i), this.width, this.height, principal, rellenarcomentarios, this, panelComentarios,btnAgregarComentario);
                 root.setLayoutY((i*(root.getPrefHeight()+10))+40);
                 root.setId(""+i);
                 root.setPrefWidth((this.width*0.25)-4);
@@ -74,7 +79,6 @@ public class MainApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void resizeElements(){
@@ -102,10 +106,12 @@ public class MainApplication {
             root.setPrefWidth(this.width*0.5);
             root.setPrefHeight(this.height);
             MostrarNoticia controller = fxmlLoader.<MostrarNoticia>getController();
-            controller.agregarNoticias(this.width, this.height, this.rellenarcomentarios);
+            controller.agregarNoticias(this.width, this.height, this.stage, this);
             principal.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }

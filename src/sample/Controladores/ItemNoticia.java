@@ -2,6 +2,7 @@ package sample.Controladores;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
@@ -18,17 +19,23 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ItemNoticia {
+    AnchorPane panelcomentarios;
+    MainApplication actualizar;
     Noticias noticia;
     Double width;
     Double height;
     Pane principal;
     AnchorPane rellenarcomentarios;
+    Button agregarcomentarios;
 
     @FXML TextField tituloItemNoticia;
     @FXML TextField fechaItemNoticia;
     @FXML TextField autorItemNoticia;
     @FXML ImageView imagenItemNoticia;
-    public void initData(Noticias noticia, Double width, Double height, Pane principal, AnchorPane rellenarcomentarios){
+    public void initData(Noticias noticia, Double width, Double height, Pane principal, AnchorPane rellenarcomentarios, MainApplication actualizar,AnchorPane panelcomentarios, Button agregarcomentarios){
+        this.agregarcomentarios=agregarcomentarios;
+        this.panelcomentarios=panelcomentarios;
+        this.actualizar=actualizar;
         this.rellenarcomentarios=rellenarcomentarios;
         this.noticia=noticia;
         this.width=width;
@@ -50,8 +57,8 @@ public class ItemNoticia {
             root.setPrefWidth(this.width*0.5);
             root.setPrefHeight(this.height);
             MostrarNoticia controller = fxmlLoader.<MostrarNoticia>getController();
-            controller.mostrarNoticia(noticia, this.width, this.height, this.rellenarcomentarios);
-            principal.getChildren().add(root);
+            controller.mostrarNoticia(noticia, this.width, this.height, this.rellenarcomentarios, actualizar, panelcomentarios,agregarcomentarios);
+            principal.getChildren().setAll(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
